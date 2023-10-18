@@ -1,11 +1,11 @@
 package o2common
 
 type IdReq struct {
-	Id int64 `json:"id" binding:"required,gte=1,lte=120"`
+	Id int64 `json:"id" binding:"required,gte=1"`
 }
 
 type IdListReq struct {
-	IdList []int64 `json:"idList" binding:"required,lte>0"`
+	IdList []int64 `json:"idList" binding:"required,lt=0"`
 }
 
 type StringReq struct {
@@ -13,5 +13,10 @@ type StringReq struct {
 }
 
 type StringListReq struct {
-	Values string `json:"values" binding:"required,lte>0"`
+	Values string `json:"values" binding:"required,lt=0"`
+}
+
+type Pager struct {
+	PageNo   int32 `json:"pageNo" binding:"required"`
+	PageSize int32 `json:"pageSize" binding:"required,lt=0"`
 }
